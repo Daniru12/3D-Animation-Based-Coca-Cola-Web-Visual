@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Daniru</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div class="bubbles"></div>
+
+    <header>
+        <div class="left">
+            <h1 style="color: white;">Pepsi & Coke Orginal Tastee</h1>
+        </div>
+    </header>
+
+    <div class="banner">
+        <div class="product">
+            <div class="soda" style="--url: url(images/bg1.jpg)"></div>
+            <div class="soda" style="--url: url(images/dd.jpg)"></div>
+        </div>
+
+        <div class="rock">
+            <img src="images/rock1.png" alt="">
+            <img src="images/rock2.png" alt="">
+            <img src="images/rock3.png" alt="">
+        </div>
+    </div>
+
+    <!-- Animated Cans -->
+    <div class="pour-container left">
+        <img src="images/cup.png" class="can" alt="Left Can">
+    </div>
+    <div class="pour-container right">
+        <img src="images/cup.png" class="can" alt="Right Can">
+    </div>
+<div class="below">
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About This Website</h2>
+            <img src="images/c.png" alt="about" class="rotate-img">
+            <p>This website is a creative animated showcase of Pepsi & Coke cans. Watch how the can pours as you scroll!</p>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Features</h2>
+            <img style="width:1050px;" src="images/c84e9f76-1355-4390-801e-e02ea83bdaea.png" alt="features" class="rotate-img">
+            <ul>
+                <li> Smooth Product Animation</li>
+                <li> Pouring Can Effect</li>
+                <li> Fully Responsive Design</li>
+                <li> Unique Visual Experience</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <img src="images/coca-cola-741x486.png" alt="contact" class="rotate-img">
+            <p>Have a suggestion or want to collaborate? Reach out at <a href="mailto:info@daniruweb.com">info@daniruweb.com</a></p>
+            <button id="scrollTop">⬆️ Back to Top</button>
+        </div>
+    </section>
+
+    <script>
+        // Scroll to top button
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Bubble animation
+        const bubbleContainer = document.querySelector('.bubbles');
+        for (let i = 0; i < 50; i++) {
+            const bubble = document.createElement('span');
+            bubble.classList.add('bubble');
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.animationDuration = `${4 + Math.random() * 6}s`;
+            bubble.style.opacity = Math.random();
+            bubble.style.width = `${15 + Math.random() * 25}px`;
+            bubble.style.height = bubble.style.width;
+            bubbleContainer.appendChild(bubble);
+        }
+
+        // Rotate image animation
+        const rotateImages = document.querySelectorAll('.rotate-img');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('rotate-active');
+                }
+            });
+        });
+        rotateImages.forEach(img => observer.observe(img));
+
+        // Can scroll effect
+        const leftCan = document.querySelector('.pour-container.left .can');
+        const rightCan = document.querySelector('.pour-container.right .can');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            leftCan.style.transform = `translateY(${scrollY * 0.4}px) rotate(${scrollY * 0.1}deg)`;
+            rightCan.style.transform = `translateY(${scrollY * 0.4}px) rotate(-${scrollY * 0.1}deg)`;
+        });
+    </script>
+    </div>
+</body>
+</html>

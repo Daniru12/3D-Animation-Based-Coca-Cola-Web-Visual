@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    color: #1E1E1E;
+    background: url('images/f87c02b0-c07f-4a38-9ea6-fa07447c8cf4.png') no-repeat center center/cover;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    width: min(1200px, 90vw);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    height: 0px;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-family: "Karantina", system-ui;
+    font-size: 16vw;
+    line-height: 0.8em;
+}
+
+.banner {
+    margin-top: -50px;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.product {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 170px;
+    z-index: 2;
+    width: 500px;
+    transition: 0.7s;
+}
+
+.product .soda {
+    position: absolute;
+    bottom: 0;
+    left: calc(50%);
+    transform: translateX(-50%);
+}
+
+.soda {
+    --left: 0px;
+    background: var(--url) var(--left), url(images/mockup.png) 0 0;
+    background-size: auto 100%;
+    width: 280px;
+    aspect-ratio: 2 / 4;
+    background-blend-mode: multiply;
+    transition: 0.8s;
+    mask-image: url(images/mockup.png);
+    mask-size: auto 100%;
+}
+
+.soda:nth-child(2) {
+    opacity: 0;
+}
+
+.product:hover {
+    bottom: 300px;
+}
+
+.product:hover .soda:nth-child(2) {
+    opacity: 1;
+    --left: 500px;
+}
+
+.product:hover .soda:nth-child(1) {
+    opacity: 0;
+    --left: 500px;
+}
+
+.rock {
+    position: absolute;
+    inset: 0 0 0 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.rock img:nth-child(1) {
+    position: absolute;
+    height: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    transition: 0.7s;
+    z-index: 1;
+}
+
+.rock img:nth-child(2) {
+    position: absolute;
+    height: 50%;
+    left: 0;
+    bottom: 0;
+    transition: 0.7s;
+}
+
+.rock img:nth-child(3) {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    bottom: -100px;
+    rotate: -25deg;
+    transition: 0.7s;
+}
+
+.banner:has(.product:hover) .rock img:nth-child(1) {
+    transform: translateX(-50%) translateY(50px);
+}
+
+.banner:has(.product:hover) .rock img:nth-child(2) {
+    transform: translateX(-100px) translateY(100px);
+}
+
+.banner:has(.product:hover) .rock img:nth-child(3) {
+    transform: translateX(100px) translateY(100px);
+}
+
+@media screen and (max-width: 1023px) {
+    .soda {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .soda {
+        width: 250px;
+    }
+}
+
+/* === Additional Sections Styling === */
+
+.container {
+    width: min(1200px, 90vw);
+    margin: auto;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.about, .features, .contact {
+    padding: 50px 0;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    margin: 50px auto;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.about h2, .features h2, .contact h2 {
+    font-family: "Karantina", system-ui;
+    font-size: 10vw;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.about p, .contact p, .features ul {
+    font-family: Poppins;
+    font-size: 1.2rem;
+    color: #ffffff;
+    max-width: 800px;
+    margin: auto;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features li {
+    margin: 5px 0;
+    font-size: 1.6rem;
+}
+
+.contact a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+#scrollTop {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1E1E1E;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#scrollTop:hover {
+    background-color: #333;
+}
+
+/* Bubble Animation */
+.bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    background: rgba(0, 153, 255, 0.2);
+    border-radius: 50%;
+    animation: rise infinite linear;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.5);
+    }
+}
+
+/* Pour Animation */
+.pour-container {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.pour-container.left {
+    left: 0;
+}
+
+.pour-container.right {
+    right: 0;
+}
+
+.can {
+    width: 300px;
+    transition: transform 0.2s ease-out;
+}
+
+/* Rotate Image */
+.rotate-img {
+    display: block;
+    margin: 100px auto;
+    width: 550px;
+    opacity: 0;
+    transform: rotate(0deg);
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.rotate-active {
+    opacity: 1;
+    transform: rotate(360deg);
+}
