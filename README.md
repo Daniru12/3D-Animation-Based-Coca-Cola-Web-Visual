@@ -1,6 +1,3 @@
-Here is a comprehensive **README.md** file for your **3D Animation-Based Coca-Cola Web Visual** project created using **React** and **JavaScript**, focusing on 3D animation:
-
----
 
 # 3D Animation-Based Coca-Cola Web Visual
 
